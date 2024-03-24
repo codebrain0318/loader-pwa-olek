@@ -1,7 +1,7 @@
 .Search {
     position: relative;
     padding: 20px;
-    height: calc(100vh - 40px);
+    min-height: calc(100vh - 40px);
     background-color: var(--bg-primary);
     /* font-family: 'Spartan Regular'; */
 }
@@ -10,6 +10,7 @@
     position: relative;
     padding: 20px;
     background-color: var(--bg-primary);
+    min-height: calc(100vh - 40px)
     /* font-family: 'Spartan Regular'; */
 }
 
@@ -59,6 +60,105 @@
     position: absolute;
     top: 27px;
     right: 12px;
+}
+
+.search-music-charts-result-label {
+    color: var(--text-forth);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.search-music-charts-result-label span {
+    font-weight: 300;
+}
+
+.search-charts-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-list {
+    width: 100%;
+    background-color: var(--bg-menu);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 37.599998474121094px 0px var(--menu-border);
+    box-shadow: 0px 4px 7.900000095367432px 0px var(--menu-border);
+}
+
+.search-list-content {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    height: 100%;
+    align-items: center;
+}
+
+.search-list-image {
+    width: 98px;
+    height: 74px;
+    border-radius: 16px;
+}
+
+.search-list-info {
+    display: flex;
+    height: 66%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.search-list-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.search-list-name {
+    color: var(--text-secondary);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.search-list-title {
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    width: calc(100vw - 280px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-list-time {
+    color: var(--accent);
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.search-list-action {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.search-downloadbtn, .search-settingbtn {
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    position: relative;
+}
+
+.search-downloadbtn svg {
+    box-shadow: 0px 4px 15.399999618530273px 0px var(--widget-shadow1);
 }
 
 .search-history {

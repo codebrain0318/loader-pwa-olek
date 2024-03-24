@@ -1,17 +1,35 @@
 import React from 'react'
-import bgPlaylist60 from '../assets/images/bg-playlist-60.png'
 import '../styles/PlaylistView.css'
 
-export default function MusicPlayingSonglist() {
+export default function MusicPlayingSonglist({songinfo, isPlaying, songNo, idx}) {
+  const songname = songinfo.info.name ? songinfo.info.name : songinfo.info.title.split(' - ').length > 1 ? songinfo.info.title.split(' - ')[0] : 'Unknown';
+  const songtitle = !songinfo.info.name && songinfo.info.title.split(' - ').length > 2 ? songinfo.info.title.split(' - ')[1] : songinfo.info.title;
   return (
     <div className='playlistview-songlist'>
       <div className='playlistview-songlist-content'>
-          <img src={bgPlaylist60} alt="bgPlaylist60" />
+          <img src={songinfo.info.image} alt="bgPlaylist60" />
           <div className='playlistview-songlist-info'>
-              <div className='playlistview-songlist-name'>Dua Lipa</div>
-              <div className='playlistview-songlist-title'>New Rules (Official)</div>
+              <div className='playlistview-songlist-name'>{songname}</div>
+              <div className='playlistview-songlist-title'>{songtitle}</div>
           </div>
       </div>
+      {isPlaying && songNo === idx && <div className='playing-animation'>
+          <svg className='playing-animation-1' width="3" height="9" viewBox="0 0 3 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect y="0.202148" width="2.25532" height="8.45745" rx="1.12766" fill="#F5F6FA"/>
+          </svg>
+          <svg className='playing-animation-2' width="3" height="21" viewBox="0 0 3 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.638306" width="2.25532" height="20.8617" rx="1.12766" fill="#F5F6FA"/>
+          </svg>
+          <svg className='playing-animation-3' width="3" height="15" viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.276611" y="0.382812" width="2.25532" height="14.0957" rx="1.12766" fill="#F5F6FA"/>
+          </svg>
+          <svg className='playing-animation-4' width="4" height="21" viewBox="0 0 4 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.914917" width="2.25532" height="20.8617" rx="1.12766" fill="#F5F6FA"/>
+          </svg>
+          <svg className='playing-animation-5' width="3" height="7" viewBox="0 0 3 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.553223" y="0.32959" width="2.25532" height="6.20213" rx="1.12766" fill="#F5F6FA"/>
+          </svg>
+      </div>}
       <div className='playlistview-songlist-action'>
         <div className='trash-button'>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +38,23 @@ export default function MusicPlayingSonglist() {
             </svg>
         </div>
         <div className='play-button'>
+          {(isPlaying && songNo === idx) ? <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle opacity="0.2" cx="21" cy="21" r="21" fill="#6C5CE7"/>
+              <g clipPath="url(#clip0_52_5258)">
+                  <rect x="4" y="4" width="34" height="34" rx="17" fill="url(#paint0_radial_52_5258)"/>
+                  <rect x="16.5" y="15.3641" width="3" height="10.6667" rx="1.5" fill="#F5F6FA"/>
+                  <rect x="22.5" y="15.3641" width="3" height="10.6667" rx="1.5" fill="#F5F6FA"/>
+              </g>
+              <defs>
+                  <radialGradient id="paint0_radial_52_5258" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(21 21) rotate(90) scale(53.5)">
+                      <stop offset="0.109966" stopColor="#6C5CE7"/>
+                      <stop offset="0.958736" stopColor="#3C3381"/>
+                  </radialGradient>
+                  <clipPath id="clip0_52_5258">
+                  <rect x="4" y="4" width="34" height="34" rx="17" fill="white"/>
+                  </clipPath>
+              </defs>
+          </svg> :
           <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle opacity="0.2" cx="21" cy="21" r="21" fill="#6C5CE7"/>
             <g clipPath="url(#clip0_25_15952)">
@@ -35,7 +70,7 @@ export default function MusicPlayingSonglist() {
                     <rect x="4" y="4" width="34" height="34" rx="17" fill="white"/>
                 </clipPath>
             </defs>
-          </svg>
+          </svg>}
         </div>
       </div>
     </div>

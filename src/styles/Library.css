@@ -1,6 +1,7 @@
 .Library {
     position: relative;
     padding: 20px;
+    min-height: calc(100vh - 40px);
     background-color: var(--bg-primary);
     /* font-family: 'Spartan Regular'; */
 }

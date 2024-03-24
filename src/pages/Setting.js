@@ -11,7 +11,7 @@ export default function Setting() {
       <div className='setting-header'>
         <Menu />
         <div className='setting-title'>Setting</div>
-        <div style={{ width: '40px' }}></div>
+        <div></div>
       </div>
       <div className='setting-panel'>
         <div className='setting-header'>

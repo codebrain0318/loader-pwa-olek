@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4} from 'uuid';
 import { getPlaylists } from '../reducers/playlistsSlice';
 import '../styles/Library.css'
 
 export default function CreatePlaylist({setPlaylists, closeModal}) {
+    const uuid = uuidv4();
     const dispatch = useDispatch();
     const [playlistName, setPlaylistName] = useState('');
     const changePlaylistName = (e) => {
@@ -17,7 +19,7 @@ export default function CreatePlaylist({setPlaylists, closeModal}) {
                 return;
             }
         }
-        playlists.push({"name": playlistName, songs: []});
+        playlists.push({"id": uuid, "name": playlistName, songs: []});
         setPlaylists(playlists);
         localStorage.setItem('playlists', JSON.stringify(playlists));
         dispatch(getPlaylists(playlists));

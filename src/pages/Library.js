@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Menu from '../components/Menu'
 import BottomMenu from '../components/BottomMenu'
 import LibraryPlaylist from '../components/LibraryPlaylist'
@@ -8,8 +9,10 @@ import PlayWidget from '../components/PlayWidget'
 import CreatePlaylist from '../components/CreatePlaylist'
 import '../styles/Library.css'
 import { getPlaylists } from '../reducers/playlistsSlice'
+import { getSongs } from '../reducers/songsSlice'
 
 export default function Library() {
+  const navigate = useNavigate();
   const playlists = useSelector(state => state.playlists.playlists);
   const songs = useSelector(state => state.songs.songs);
   const dispatch = useDispatch();
@@ -27,7 +30,10 @@ export default function Library() {
     const songsInPlaylists = songs.filter(song => playlistSongTitles.includes(song.info.title));
     const songsNotInPlaylists = songs.filter(song => !playlistSongTitles.includes(song.info.title));
     return { songsInPlaylists, songsNotInPlaylists };
-}
+  }
+  const go2Search = () => {
+    navigate('/search');
+  }
   const openCreatePlaylistModal = () => {
     setIsOpenedCreatePlaylistModal(true);
   }
@@ -57,12 +63,16 @@ export default function Library() {
   const setPlaylists = (playlists) => {
     dispatch(getPlaylists(playlists));
   }
+  useEffect(() => {
+    dispatch(getPlaylists(JSON.parse(localStorage.getItem('playlists')) || []));
+    dispatch(getSongs(JSON.parse(localStorage.getItem('songs')) || []));
+  }, [dispatch]);
   return (
     <div className='Library'>
       <div className='library-header'>
         <Menu />
         <div className='library-title'>Library</div>
-        <div style={{ width: '40px' }}></div>
+        <div></div>
       </div>
       <div className='library-tab'>
           <div className='tab playlists-tab' onClick={setPlaylist}>
@@ -112,7 +122,7 @@ export default function Library() {
       <div className='library-all-songs'>
         <div className='library-all-songs-label-container'>
           <div className='library-all-songs-label'>{displaySongs.length} Songs</div>
-          <div className='add-new-button'>
+          <div className='add-new-button' onClick={go2Search}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="#6C5CE7"/>
               <path d="M12 9.5L12 14.5" stroke="#6C5CE7" strokeWidth="1.5" strokeLinecap="round"/>
@@ -130,7 +140,7 @@ export default function Library() {
           {displaySongs.map(song => <LibrarySonglist key={song.id} songinfo={song} />)}
         </div>
         <div className='create-new-button-container'>
-          <div className='create-new-button' style={{ marginBottom: '94px' }}>
+          <div className='create-new-button' onClick={go2Search} style={{ marginBottom: '94px' }}>
             <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" y="0.5" width="41" height="41" rx="20.5" stroke="#6C5CE7"/>
               <path d="M21 14L21 28" stroke="#6C5CE7" strokeWidth="1.5" strokeLinecap="round"/>

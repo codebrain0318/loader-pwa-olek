@@ -1,10 +1,10 @@
 import React,{ useContext } from 'react'
 import { ThemeContext } from '../Theme'
 
-export default function DeleteButton() {
+export default function DeleteButton({deleteHistory, history}) {
     const { theme } = useContext(ThemeContext);
     return (
-        <div className='delete-button'>
+        <div className='delete-button' onClick={() => deleteHistory(history)}>
             {theme === 'light-theme' ? <svg width="30" height="30" viewBox="16 12 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_33_17363)">
                     <rect x="16" y="42" width="30" height="30" rx="8" transform="rotate(-90 16 42)" fill="white"/>

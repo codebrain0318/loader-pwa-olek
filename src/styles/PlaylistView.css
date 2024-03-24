@@ -178,8 +178,8 @@
 .playing-animation {
     position: absolute;
     z-index: 2;
-    top: 28px;
-    left: 28px;
+    top: 34px;
+    left: 45px;
     display: flex;
     align-items: center;
     gap: 2px;

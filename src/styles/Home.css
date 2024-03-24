@@ -291,9 +291,8 @@
 
 .chart-list-info {
     display: flex;
-    height: 66%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
 }
 
@@ -301,13 +300,17 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    gap: 16px;
 }
 
 .chart-list-name {
     color: var(--text-secondary);
     font-size: 10px;
     font-weight: 400;
+    width: calc(100vw - 280px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .chart-list-title {
@@ -318,12 +321,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-.chart-list-time {
-    color: var(--accent);
-    font-size: 8px;
-    font-weight: 600;
 }
 
 .to-playlist-actions {

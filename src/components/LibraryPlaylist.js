@@ -9,7 +9,7 @@ export default function LibraryPlaylist({ playlistinfo }) {
     navigate(`/playlist/${name}`);
   }
   const go2MusicPlaying = () => {
-    navigate('/playing');
+    navigate('/playing/'+playlistinfo.id);
   }
   return (
     <div className='library-playlist'>

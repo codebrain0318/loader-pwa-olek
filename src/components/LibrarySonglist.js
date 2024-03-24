@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import bgDelete from '../assets/images/bg-delete.png'
 import '../styles/Library.css'
 
 export default function LibraryPlaylist({songinfo}) {
+  const navigate = useNavigate();
+  const playlists = useSelector(state => state.playlists.playlists);
+  const [addedPlaylists, setAddedPlaylists] = useState('');
   const [displayStatus, setDisplayStatus] = useState('main');
   const toggleDisplay = () => {    
     setDisplayStatus(displayStatus !== 'inplaylist' ? 'inplaylist' : 'main');
@@ -10,15 +15,27 @@ export default function LibraryPlaylist({songinfo}) {
   const showToDelete = () => {
     setDisplayStatus('todelete');
   }
+  const playMusic = (id) => {
+    navigate('/singleplaying/'+id);
+  }
+  useEffect(() => {
+      let temp = [];
+      playlists.forEach(playlist => {
+          if (playlist.songs.some(song => song.info.title === songinfo.info.title)) {
+              temp.push(playlist.name);
+          }
+      });
+      setAddedPlaylists(temp.join(', '));
+  }, [playlists, songinfo])
   return (
     <div className='library-songlist'>
       <div className='library-songlist-content'>
           {displayStatus !== 'todelete' && <img className='library-songlist-song-image' src={songinfo.info.image} alt="bgPlaylist70" />}
           {displayStatus === 'todelete' && <img src={bgDelete} alt="bgDelete" />}
           {displayStatus === 'main' && <div className='library-songlist-info'>
-              <div className='library-songlist-name'>{songinfo.info.title.split(' - ')[0]}</div>
-              <div className='library-songlist-title'>{songinfo.info.title.split(' - ')[1]}</div>
-              <div className='library-songlist-playlist'>Playlist: <span>Playlist_1</span></div>
+              <div className='library-songlist-name'>{songinfo.info.name ? songinfo.info.name : songinfo.info.title.split(' - ').length > 1 ? songinfo.info.title.split(' - ')[0] : 'Unknown'}</div>
+              <div className='library-songlist-title'>{!songinfo.info.name && songinfo.info.title.split(' - ').length > 2 ? songinfo.info.title.split(' - ')[1] : songinfo.info.title}</div>
+              <div className='library-songlist-playlist'>Playlist: <span>{addedPlaylists}</span></div>
           </div>}
           {displayStatus === 'inplaylist' && <div className='in-playlist'>
             <svg className='in-playlist-delete-button' onClick={showToDelete} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +67,7 @@ export default function LibraryPlaylist({songinfo}) {
           </div>}
       </div>
       <div className='library-songlist-action'>
-        {displayStatus === 'main' && <div className='play-button'>
+        {displayStatus === 'main' && <div className='play-button' onClick={() => playMusic(songinfo.id)}>
           <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle opacity="0.2" cx="21" cy="21" r="21" fill="#6C5CE7"/>
             <g clipPath="url(#clip0_25_15952)">

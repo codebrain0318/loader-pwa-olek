@@ -12,6 +12,7 @@ import Search from './pages/Search';
 import SearchDetail from './pages/SearchDetail';
 import Setting from './pages/Setting';
 import MusicPlaying from './pages/MusicPlaying';
+import SingleMusicPlaying from './pages/SingleMusicPlaying';
 import store from './store';
 import './App.css';
 
@@ -31,7 +32,8 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/search/:search_content" element={<SearchDetail />} />
             <Route path="/setting" element={<Setting />} />
-            <Route path="/playing" element={<MusicPlaying />} />
+            <Route path="/playing/:id" element={<MusicPlaying />} />
+            <Route path="/singleplaying/:id" element={<SingleMusicPlaying />} />
           </Routes>
         </Router>
       </div>

@@ -75,7 +75,7 @@ export default function PlayingSonglist() {
                     </filter>
                     <radialGradient id="paint0_radial_52_5244" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(190 68) scale(194.5 77)">
                         <stop stopColor="#D9D9D9"/>
-                        <stop offset="1" stopColor="#737373" stop-opacity="0"/>
+                        <stop offset="1" stopColor="#737373" stopOpacity="0"/>
                     </radialGradient>
                     <linearGradient id="paint1_linear_52_5244" x1="-4.5" y1="13.9362" x2="611.143" y2="13.9362" gradientUnits="userSpaceOnUse">
                         <stop stopColor="#FF0000"/>
@@ -84,7 +84,7 @@ export default function PlayingSonglist() {
                         <stop offset="0.401042" stopColor="#24FF00"/>
                         <stop offset="0.515625" stopColor="#00FFF0"/>
                         <stop offset="0.661458" stopColor="#0029FF"/>
-                        <stop offset="0.734375" stopColor="#8F00FF" stop-opacity="0.784615"/>
+                        <stop offset="0.734375" stopColor="#8F00FF" stopOpacity="0.784615"/>
                         <stop offset="0.869792" stopColor="#FF00E5"/>
                         <stop offset="1" stopColor="#FF0000"/>
                     </linearGradient>
@@ -109,7 +109,7 @@ export default function PlayingSonglist() {
                     </filter>
                     <radialGradient id="paint0_radial_14_1296" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(196.5 115) scale(194.5 77)">
                         <stop stopColor="#D9D9D9"/>
-                        <stop offset="1" stopColor="#737373" stop-opacity="0"/>
+                        <stop offset="1" stopColor="#737373" stopOpacity="0"/>
                     </radialGradient>
                     <linearGradient id="paint1_linear_14_1296" x1="-225" y1="60.936" x2="390.643" y2="60.936" gradientUnits="userSpaceOnUse">
                         <stop stopColor="#FF0000"/>
@@ -118,7 +118,7 @@ export default function PlayingSonglist() {
                         <stop offset="0.401042" stopColor="#24FF00"/>
                         <stop offset="0.515625" stopColor="#00FFF0"/>
                         <stop offset="0.661458" stopColor="#0029FF"/>
-                        <stop offset="0.734375" stopColor="#8F00FF" stop-opacity="0.784615"/>
+                        <stop offset="0.734375" stopColor="#8F00FF" stopOpacity="0.784615"/>
                         <stop offset="0.869792" stopColor="#FF00E5"/>
                         <stop offset="1" stopColor="#FF0000"/>
                     </linearGradient>
