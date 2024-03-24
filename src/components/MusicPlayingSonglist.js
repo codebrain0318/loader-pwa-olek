@@ -2,15 +2,13 @@ import React from 'react'
 import '../styles/PlaylistView.css'
 
 export default function MusicPlayingSonglist({songinfo, isPlaying, songNo, idx}) {
-  const songname = songinfo.info.name ? songinfo.info.name : songinfo.info.title.split(' - ').length > 1 ? songinfo.info.title.split(' - ')[0] : 'Unknown';
-  const songtitle = !songinfo.info.name && songinfo.info.title.split(' - ').length > 2 ? songinfo.info.title.split(' - ')[1] : songinfo.info.title;
   return (
     <div className='playlistview-songlist'>
       <div className='playlistview-songlist-content'>
-          <img src={songinfo.info.image} alt="bgPlaylist60" />
+          <img src={songinfo.image} alt="bgPlaylist60" />
           <div className='playlistview-songlist-info'>
-              <div className='playlistview-songlist-name'>{songname}</div>
-              <div className='playlistview-songlist-title'>{songtitle}</div>
+              <div className='playlistview-songlist-name'>{songinfo.name}</div>
+              <div className='playlistview-songlist-title'>{songinfo.title}</div>
           </div>
       </div>
       {isPlaying && songNo === idx && <div className='playing-animation'>

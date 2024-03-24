@@ -1,91 +1,27 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ThemeContext } from '../Theme'
 import ToggleButton from './ToggleButton'
 import '../styles/Menu.css';
 
 export default function Menu() {
-    const { theme } = useContext(ThemeContext);
     const [isMenuOpened, setIsMenuOpened] = useState(false);
     const toggleMenu = () => {
         setIsMenuOpened(isMenuOpened ? false : true);
     };
     return (
         <div className='Menu'>
-            <div className='toggle-button'>
-                {theme === 'light-theme' && isMenuOpened ? <svg width="40" height="40" viewBox="16 12 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={toggleMenu}>
-                    <g filter="url(#filter0_d_71_19840)">
-                        <rect x="16" y="12" width="40" height="40" rx="12" fill="white"/>
-                        <path d="M42 26L30 38M42 38L30 26" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
-                    </g>
-                    <defs>
-                        <filter id="filter0_d_71_19840" x="0.6" y="0.6" width="70.8" height="70.8" filterUnits="userSpaceOnUse" colorinterpolation-filters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feOffset dy="4"/>
-                            <feGaussianBlur stdDeviation="7.7"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0.698039 0 0 0 0 0.745098 0 0 0 0 0.764706 0 0 0 0.37 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_71_19840"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_71_19840" result="shape"/>
-                        </filter>
-                    </defs>
-                </svg> : theme === 'light-theme' && !isMenuOpened ? <svg width="40" height="40" viewBox="16 12 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={toggleMenu}>
-                    <g filter="url(#filter0_d_71_19849)">
-                        <rect x="16" y="12" width="40" height="40" rx="12" fill="white"/>
-                        <path d="M28 29H44" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
-                        <path d="M28 35H44" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
-                        <circle cx="46.5" cy="22.5" r="3.5" fill="#0AC956"/>
-                    </g>
-                    <defs>
-                        <filter id="filter0_d_71_19849" x="0.6" y="0.6" width="70.8" height="70.8" filterUnits="userSpaceOnUse" colorinterpolation-filters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feOffset dy="4"/>
-                            <feGaussianBlur stdDeviation="7.7"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0.698039 0 0 0 0 0.745098 0 0 0 0 0.764706 0 0 0 0.37 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_71_19849"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_71_19849" result="shape"/>
-                        </filter>
-                    </defs>
-                </svg> : theme === 'dark-theme' && isMenuOpened ? <svg width="40" height="40" viewBox="16 12 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={toggleMenu}>
-                    <g filter="url(#filter0_d_134_23594)">
-                        <rect x="16" y="12" width="40" height="40" rx="12" fill="#191A1D"/>
-                        <path d="M42 26L30 38M42 38L30 26" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
-                    </g>
-                    <defs>
-                        <filter id="filter0_d_134_23594" x="0.6" y="0.6" width="70.8" height="70.8" filterUnits="userSpaceOnUse" colorinterpolation-filters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feOffset dy="4"/>
-                            <feGaussianBlur stdDeviation="7.7"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0 0.0509804 0 0 0 0.37 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_134_23594"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_134_23594" result="shape"/>
-                        </filter>
-                    </defs>
-                </svg> : <svg width="40" height="40" viewBox="16 12 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_d_134_23587)" onClick={toggleMenu}>
-                        <rect x="16" y="12" width="40" height="40" rx="12" fill="#191A1D"/>
-                        <path d="M28 29H44" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
-                        <path d="M28 35H44" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
-                        <circle cx="46.5" cy="22.5" r="3.5" fill="#0AC956"/>
-                    </g>
-                    <defs>
-                        <filter id="filter0_d_134_23587" x="0.6" y="0.6" width="70.8" height="70.8" filterUnits="userSpaceOnUse" colorinterpolation-filters="sRGB">
-                            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feOffset dy="4"/>
-                            <feGaussianBlur stdDeviation="7.7"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0.0431373 0 0 0 0 0.0470588 0 0 0 0 0.0509804 0 0 0 0.37 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_134_23587"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_134_23587" result="shape"/>
-                        </filter>
-                    </defs>
-                </svg>}
+            <div className='toggle-button' onClick={toggleMenu}>
+                <div className='toggle-button-content'>
+                    {!isMenuOpened ? <><svg width="18" height="8" viewBox="0 0 18 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1H17" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M1 7H17" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: '7px', top: '7px' }}>
+                        <circle cx="3.5" cy="3.5" r="3.5" fill="#0AC956"/>
+                    </svg></> : <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 1L1 13M13 13L1 1" stroke="#8391A1" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>}
+                </div>
             </div>            
             {isMenuOpened && <div className='menu-panel'>
                 <div className='menu-header'>

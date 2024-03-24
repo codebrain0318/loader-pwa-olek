@@ -11,7 +11,7 @@ export default function PlaylistViewSonglist({songinfo, playlistname}) {
       if (playlist.name === playlistname) {
           return {
             ...playlist,
-            songs: playlist.songs.filter(song => song.info.title !== songinfo.info.title)
+            songs: playlist.songs.filter(song => song.title !== songinfo.title)
           };
       }
       return playlist;
@@ -22,10 +22,10 @@ export default function PlaylistViewSonglist({songinfo, playlistname}) {
   return (
     <div className='playlistview-songlist'>
       <div className='playlistview-songlist-content'>
-          <img src={songinfo.info.image} alt="bgPlaylist70" />
+          <img src={songinfo.image} alt="bgPlaylist70" />
           <div className='playlistview-songlist-info'>
-              <div className='playlistview-songlist-name'>{songinfo.info.name ? songinfo.info.name : songinfo.info.title.split(' - ').length > 1 ? songinfo.info.title.split(' - ')[0] : 'Unknown'}</div>
-              <div className='playlistview-songlist-title'>{!songinfo.info.name && songinfo.info.title.split(' - ').length > 2 ? songinfo.info.title.split(' - ')[1] : songinfo.info.title}</div>
+              <div className='playlistview-songlist-name'>{songinfo.name}</div>
+              <div className='playlistview-songlist-title'>{songinfo.title}</div>
           </div>
       </div>
       <div className='playlistview-songlist-action'>

@@ -55,8 +55,8 @@ export default function Home() {
     try {
       const temp = await Promise.all(
         videos.map(async (video) => {
-          const response = await axios.get('https://loader.to/ajax/download.php?format=m4a&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D' + video.split('=')[1] + '&api=dfcb6d76f2f6a9894gjkege8a44563255');
-          return {"id": response.data.id, "info": response.data.info};
+          const response = await axios.get('https://noembed.com/embed?url='+video);
+          return {"id": video.split('=')[1], "image": response.data.thumbnail_url,  "name": response.data.author_name, "title": response.data.title};
         })
       );
       setCharts(temp);

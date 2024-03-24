@@ -21,7 +21,7 @@ export default function LibraryPlaylist({songinfo}) {
   useEffect(() => {
       let temp = [];
       playlists.forEach(playlist => {
-          if (playlist.songs.some(song => song.info.title === songinfo.info.title)) {
+          if (playlist.songs.some(song => song.title === songinfo.title)) {
               temp.push(playlist.name);
           }
       });
@@ -30,11 +30,11 @@ export default function LibraryPlaylist({songinfo}) {
   return (
     <div className='library-songlist'>
       <div className='library-songlist-content'>
-          {displayStatus !== 'todelete' && <img className='library-songlist-song-image' src={songinfo.info.image} alt="bgPlaylist70" />}
+          {displayStatus !== 'todelete' && <img className='library-songlist-song-image' src={songinfo.image} alt="bgPlaylist70" />}
           {displayStatus === 'todelete' && <img src={bgDelete} alt="bgDelete" />}
           {displayStatus === 'main' && <div className='library-songlist-info'>
-              <div className='library-songlist-name'>{songinfo.info.name ? songinfo.info.name : songinfo.info.title.split(' - ').length > 1 ? songinfo.info.title.split(' - ')[0] : 'Unknown'}</div>
-              <div className='library-songlist-title'>{!songinfo.info.name && songinfo.info.title.split(' - ').length > 2 ? songinfo.info.title.split(' - ')[1] : songinfo.info.title}</div>
+              <div className='library-songlist-name'>{songinfo.name}</div>
+              <div className='library-songlist-title'>{songinfo.title}</div>
               <div className='library-songlist-playlist'>Playlist: <span>{addedPlaylists}</span></div>
           </div>}
           {displayStatus === 'inplaylist' && <div className='in-playlist'>

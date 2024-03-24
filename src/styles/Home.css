@@ -352,7 +352,11 @@
 }
 
 .downloadbtn svg {
-    box-shadow: 0px 4px 15.399999618530273px 0px var(--widget-shadow1);
+    margin-top: 10px;
+}
+
+.settingbtn {
+    margin-left: -20px;
 }
 
 .loadmore {

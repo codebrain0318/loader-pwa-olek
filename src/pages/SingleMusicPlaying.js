@@ -58,10 +58,8 @@ export default function SingleMusicPlaying() {
   useEffect(() => {
     const selectedSong = songs.find(song => song.id === id);
     setCurrSong(selectedSong.audioUrl);
-    setSongName(selectedSong.info.name ? selectedSong.info.name : selectedSong.info.title.split(' - ').length > 1 ? selectedSong.info.title.split(' - ')[0] : 'Unknown');
-    setSongTitle(!selectedSong.info.name && selectedSong.info.title.split(' - ').length > 2 ? selectedSong.info.title.split(' - ')[1] : selectedSong.info.title);
-    console.log('id>>>>>>>', id);
-    console.log('selectedSong>>>>>>>', selectedSong);
+    setSongName(selectedSong.name);
+    setSongTitle(selectedSong.title);
   }, [songs, id]);
   return (
     <div className='SingleMusicPlaying'>

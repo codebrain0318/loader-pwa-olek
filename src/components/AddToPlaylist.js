@@ -9,7 +9,7 @@ export default function AddToPlaylist({chartinfo, closeAddToPlaylist, openCreate
     useEffect(() => {
         let temp = [];
         playlists.forEach(playlist => {
-            if (playlist.songs.some(song => song.info.title === chartinfo.info.title)) {
+            if (playlist.songs.some(song => song.title === chartinfo.title)) {
                 temp.push(playlist.name);
             }
         });
@@ -28,8 +28,8 @@ export default function AddToPlaylist({chartinfo, closeAddToPlaylist, openCreate
                 <div className='addto-playlist-content'>                    
                     <div className='addto-playlist-songtitle-container'>
                         <div className='addto-playlist-songtitle'>
-                            <div className='addto-playlist-songtitle-name'>{chartinfo.info.title.split(' - ')[0]}</div>
-                            <div className='addto-playlist-songtitle-title'>{chartinfo.info.title.split(' - ')[1]}</div>
+                            <div className='addto-playlist-songtitle-name'>{chartinfo.name}</div>
+                            <div className='addto-playlist-songtitle-title'>{chartinfo.title}</div>
                         </div>
                         <div className='addto-playlist-playlist-name'>
                         Added to: <span>{addedPlaylists}</span>

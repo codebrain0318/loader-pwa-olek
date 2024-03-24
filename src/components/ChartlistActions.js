@@ -26,10 +26,11 @@ export default function ChartlistActions({toggleDisplay, chartinfo}) {
         localStorage.setItem('songs', JSON.stringify(chartlists));
     }
     
-    const startDownload = () => {
+    const startDownload = async () => {
         if (downloadState === 'notyet') {
             setDownloadState('downloading');
-            axios.get('https://p.oceansaver.in/ajax/progress.php?id='+chartinfo.id)
+            const response = await axios.get('https://loader.to/ajax/download.php?format=m4a&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D'+chartinfo.id+'&api=dfcb6d76f2f6a9894gjkege8a44563255');
+            axios.get('https://p.oceansaver.in/ajax/progress.php?id='+response.data.id)
                 .then(response => {
                     saveChartlist(response.data.download_url);
                     setDownloadState('done');
@@ -50,7 +51,7 @@ export default function ChartlistActions({toggleDisplay, chartinfo}) {
     }
     useEffect(() => {
         for (let song of songs) {
-            if (song.info.title === chartinfo.info.title) {
+            if (song.title === chartinfo.title) {
                 setDownloadState('done');
                 return;
             }
@@ -65,7 +66,7 @@ export default function ChartlistActions({toggleDisplay, chartinfo}) {
                     clearInterval(interval);
                     setDownloadState('done');
                 }
-            }, 12);
+            }, 16);
         } else {
             clearInterval(interval);
         }
@@ -74,7 +75,7 @@ export default function ChartlistActions({toggleDisplay, chartinfo}) {
     return (
         <div className='chart-list-action'>
             <button className='downloadbtn' onClick={startDownload}>
-                {theme === 'light-theme' && downloadState !== 'done' && !isHiddenDownButton && <svg width="42" height="42" viewBox="16 12 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {theme === 'light-theme' && downloadState !== 'done' && !isHiddenDownButton && <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_18_151)">
                         <rect x="16" y="12" width="42" height="42" rx="21" fill="#EAECF2"/>
                         <rect x="21.5" y="17.5" width="31" height="31" rx="15.5" fill="#F5F6FA"/>
@@ -95,7 +96,7 @@ export default function ChartlistActions({toggleDisplay, chartinfo}) {
                         </filter>
                     </defs>
                 </svg>}
-                {theme === 'light-theme' && downloadState === 'done' && !isHiddenDownButton && <svg width="42" height="42" viewBox="16 12 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {theme === 'light-theme' && downloadState === 'done' && !isHiddenDownButton && <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_d_18_147)">
                         <rect x="16" y="12" width="42" height="42" rx="21" fill="#EAECF2"/>
                         <rect x="21.5" y="17.5" width="31" height="31" rx="15.5" fill="#F5F6FA"/>
@@ -130,7 +131,7 @@ export default function ChartlistActions({toggleDisplay, chartinfo}) {
                     <path opacity="0.05" d="M21 1.5C31.7696 1.5 40.5 10.2304 40.5 21C40.5 31.7696 31.7696 40.5 21 40.5C10.2304 40.5 1.5 31.7696 1.5 21C1.5 10.2304 10.2304 1.5 21 1.5ZM21 38.1342C30.463 38.1342 38.1342 30.463 38.1342 21C38.1342 11.537 30.463 3.86579 21 3.86579C11.537 3.86579 3.86579 11.537 3.86579 21C3.86579 30.463 11.537 38.1342 21 38.1342Z" fill="white"/>
                     <path d="M21 1.5C31.7696 1.5 40.5 10.2304 40.5 21C40.5 31.7696 31.7696 40.5 21 40.5C10.2304 40.5 1.5 31.7696 1.5 21C1.5 10.2304 10.2304 1.5 21 1.5ZM21 38.1342C30.463 38.1342 38.1342 30.463 38.1342 21C38.1342 11.537 30.463 3.86579 21 3.86579C11.537 3.86579 3.86579 11.537 3.86579 21C3.86579 30.463 11.537 38.1342 21 38.1342Z" fill="#0AC956"/>
                 </svg>}
-                {downloadState === 'downloading' && !isHiddenDownButton  && <div style={{ width: '40px', position: 'absolute', left: '1px', top: '1px' }}>
+                {downloadState === 'downloading' && !isHiddenDownButton  && <div style={{ width: '40px', position: 'absolute', left: '17px', top: '13px' }}>
                     <CircularProgressbar
                         value={progress}
                         text={`${progress}%`}

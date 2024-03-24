@@ -20,7 +20,7 @@ export default function AddToPlaylistCard({ playlistinfo, chartinfo }) {
         } else {
           return {
             ...playlist,
-            songs: playlist.songs.filter(song => song.info.title !== chartinfo.info.title)
+            songs: playlist.songs.filter(song => song.title !== chartinfo.title)
           };
         }
       }
@@ -39,7 +39,7 @@ export default function AddToPlaylistCard({ playlistinfo, chartinfo }) {
   }
   useEffect(() => {
     for (let song of playlistinfo.songs) {
-      if (song.info.title === chartinfo.info.title) {
+      if (song.title === chartinfo.title) {
           setIsAdded(true);
           return;
       }

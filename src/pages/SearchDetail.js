@@ -45,16 +45,13 @@ export default function SearchDetail() {
       try {
         const temp = await Promise.all(
             videos.map(async (video) => {
-                const response = await axios.get('https://loader.to/ajax/download.php?format=m4a&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D' + video.id + '&api=dfcb6d76f2f6a9894gjkege8a44563255');
                 return {
-                    "id": response.data.id,
-                    "info": {
-                        "name": video.channel.name,
-                        "title": video.title,
-                        "image": video.thumbnail,
-                        "views": video.views.toLocaleString(),
-                        "duration": video.durationString
-                    }
+                    "id": video.id,
+                    "name": video.channel.name,
+                    "title": video.title,
+                    "image": video.thumbnail,
+                    "views": video.views.toLocaleString(),
+                    "duration": video.durationString
                 };
             })
         );

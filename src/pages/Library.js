@@ -24,11 +24,11 @@ export default function Library() {
     const playlistSongTitles = [];
     playlists.forEach(playlist => {
         playlist.songs.forEach(song => {
-          playlistSongTitles.push(song.info.title);
+          playlistSongTitles.push(song.title);
         });
     });
-    const songsInPlaylists = songs.filter(song => playlistSongTitles.includes(song.info.title));
-    const songsNotInPlaylists = songs.filter(song => !playlistSongTitles.includes(song.info.title));
+    const songsInPlaylists = songs.filter(song => playlistSongTitles.includes(song.title));
+    const songsNotInPlaylists = songs.filter(song => !playlistSongTitles.includes(song.title));
     return { songsInPlaylists, songsNotInPlaylists };
   }
   const go2Search = () => {

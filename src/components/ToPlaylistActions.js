@@ -1,11 +1,11 @@
 import React from 'react'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ToPlaylistActions({chartinfo, showAddToPlaylist}) {
-    // const navigate = useNavigate();
-    // const playMusic = () => {
-        // navigate('/singleplaying/'+chartinfo.id);
-    // }
+    const navigate = useNavigate();
+    const playMusic = () => {
+        navigate('/singleplaying/'+chartinfo.id);
+    }
     return (
         <div className='to-playlist-actions'>
             <div className='to-playlist-button' onClick={() => showAddToPlaylist(chartinfo)}>
@@ -24,8 +24,7 @@ export default function ToPlaylistActions({chartinfo, showAddToPlaylist}) {
                     </defs>
                 </svg>
             </div>
-            {/* <div className='to-playlist-play-button' onClick={playMusic}> */}
-            <div className='to-playlist-play-button'>
+            <div className='to-playlist-play-button' onClick={playMusic}>
                 <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle opacity="0.2" cx="21" cy="21" r="21" fill="#6C5CE7"/>
                     <g clipPath="url(#clip0_25_15967)">

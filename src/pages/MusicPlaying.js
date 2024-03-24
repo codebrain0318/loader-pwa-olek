@@ -70,31 +70,31 @@ export default function MusicPlaying() {
   const goNext = () => {
     const no = (songNo + 1) % songsInPlaylist.length;
     const current = songsInPlaylist[no];
-    const currentSongDetail = songs.find(song => song.info.title === current.info.title);
+    const currentSongDetail = songs.find(song => song.title === current.title);
     setIsPlaying(false);
     setSongNo(no);
-    setCurrentSongName(current.info.name ? current.info.name : current.info.title.split(' - ').length > 1 ? current.info.title.split(' - ')[0] : 'Unknown');
-    setCurrentSongTitle(!current.info.name && current.info.title.split(' - ').length > 2 ? current.info.title.split(' - ')[1] : current.info.title);
+    setCurrentSongName(current.name);
+    setCurrentSongTitle(current.title);
     setMusicSrc(currentSongDetail.audioUrl);
   }
   const goPrev = () => {
     const no = (songNo + songsInPlaylist.length - 1) % songsInPlaylist.length;
     const current = songsInPlaylist[no];
-    const currentSongDetail = songs.find(song => song.info.title === current.info.title);
+    const currentSongDetail = songs.find(song => song.title === current.title);
     setIsPlaying(false);
     setSongNo(no);
-    setCurrentSongName(current.info.name ? current.info.name : current.info.title.split(' - ').length > 1 ? current.info.title.split(' - ')[0] : 'Unknown');
-    setCurrentSongTitle(!current.info.name && current.info.title.split(' - ').length > 2 ? current.info.title.split(' - ')[1] : current.info.title);
+    setCurrentSongName(current.name);
+    setCurrentSongTitle(current.title);
     setMusicSrc(currentSongDetail.audioUrl);
   }
   useEffect(() => {
     const selectedPlaylist = playlists.find(item => item.id === id);
     const current = selectedPlaylist.songs[0];
-    const currentSongDetail = songs.find(song => song.info.title === current.info.title);
+    const currentSongDetail = songs.find(song => song.title === current.title);
     setSongsInPlaylist(selectedPlaylist.songs);
     setSongNo(0);
-    setCurrentSongName(current.info.name ? current.info.name : current.info.title.split(' - ').length > 1 ? current.info.title.split(' - ')[0] : 'Unknown');
-    setCurrentSongTitle(!current.info.name && current.info.title.split(' - ').length > 2 ? current.info.title.split(' - ')[1] : current.info.title);
+    setCurrentSongName(current.name);
+    setCurrentSongTitle(current.title);
     setMusicSrc(currentSongDetail.audioUrl);
   }, [id, playlists, songs]);
   return (

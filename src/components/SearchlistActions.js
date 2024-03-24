@@ -22,15 +22,16 @@ export default function SearchlistActions({toggleDisplay, chartinfo}) {
                 return;
             }
         }
-        chartlists.push({"id": chartinfo.id, audioUrl: url, info: {"name": chartinfo.info.name, "title": chartinfo.info.title, "image": chartinfo.info.image}});
+        chartlists.push({"id": chartinfo.id, audioUrl: url, "name": chartinfo.name, "title": chartinfo.title, "image": chartinfo.image});
         dispatch(getSongs(chartlists));
         localStorage.setItem('songs', JSON.stringify(chartlists));
     }
     
-    const startDownload = () => {
+    const startDownload = async () => {
         if (downloadState === 'notyet') {
             setDownloadState('downloading');
-            axios.get('https://p.oceansaver.in/ajax/progress.php?id='+chartinfo.id)
+            const response = await axios.get('https://loader.to/ajax/download.php?format=m4a&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D'+chartinfo.id+'&api=dfcb6d76f2f6a9894gjkege8a44563255');
+            axios.get('https://p.oceansaver.in/ajax/progress.php?id='+response.data.id)
                 .then(response => {
                     saveChartlist(response.data.download_url);
                     setDownloadState('done');
@@ -51,7 +52,7 @@ export default function SearchlistActions({toggleDisplay, chartinfo}) {
     }
     useEffect(() => {
         for (let song of songs) {
-            if (song.info.title === chartinfo.info.title) {
+            if (song.title === chartinfo.title) {
                 setDownloadState('done');
                 return;
             }
